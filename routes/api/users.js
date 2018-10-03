@@ -7,7 +7,7 @@ const passport = require("passport");
 
 //load input validation
 const validateRegisterInput = require("../../validation/register");
-
+const validateLoginInput = require("../../validation/login");
 const secretKey = require("../../config/keys").secretKey;
 
 const router = express.Router();
@@ -62,13 +62,21 @@ router.post("/register", (req, res) => {
 //@dsc login users route
 //@access public
 router.post("/login", (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  //check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
   //try to find user
   User.findOne({ email }).then(user => {
     if (!user) {
-      return res.status(404).json({ email: "user not found" });
+      errors.email = "user not found";
+      return res.status(404).json(errors);
     }
 
     //compare password
@@ -89,7 +97,8 @@ router.post("/login", (req, res) => {
         });
         // res.json({ msg: "success" });
       } else {
-        return res.status(400).json({ password: "password incorrect" });
+        errors.password = "password incorrect";
+        return res.status(400).json(errors);
       }
     });
   });
