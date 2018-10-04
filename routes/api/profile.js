@@ -15,6 +15,62 @@ const validateProfileInput = require("../../validation/profile");
 router.get("/test", (req, res) =>
   res.json({ msg: "hello world from profile" })
 );
+//@route GET api/profile/all
+//@dsc gets all profiles
+//@access public
+router.get("/all", (req, res) => {
+  const errors = {};
+  Profile.find()
+    .populate("user", ["name", "avatar"])
+    .then(profiles => {
+      if (!profiles) {
+        errors.noprofile = "there are no profiles";
+        return res.status(404).json(errors);
+      }
+      res.json(profiles);
+    })
+    .catch(res.status(404).json({ profiles: "there are no profiles" }));
+});
+
+//@route GET api/profile/handle/:handle
+//@dsc gets profile by handle
+//@access public
+
+router.get("/handle/:handle", (req, res) => {
+  const errors = {};
+
+  Profile.findOne({ handle: req.params.handle })
+    .populate("user", ["name", "avatar"])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = "there's no profilr for this user";
+        res.status(404).json(errors);
+      }
+      res.json(profile);
+    })
+    .catch(err => res.status(404).json(err));
+});
+
+//@route GET api/profile/user/:user_id
+//@dsc gets profile by user id
+//@access public
+
+router.get("/user/:user_id", (req, res) => {
+  const errors = {};
+
+  Profile.findOne({ user: req.params.user_id })
+    .populate("user", ["name", "avatar"])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = "there's no profilr for this user";
+        res.status(404).json(errors);
+      }
+      res.json(profile);
+    })
+    .catch(err =>
+      res.status(404).json({ profile: "no profile for any user with this id" })
+    );
+});
 
 //@route GET api/profile
 //@dsc gets current user profile
