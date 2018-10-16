@@ -1,2 +1,2 @@
 fix --bug in /api/profile/all --caught on 10/16/18
-fix --bug in delete api/profile --caught on 10/16/18
+fix --bug in delete api/profile --caught on 10/16/18 --10/16/18 fixed profile delete, but user isn't being deleted

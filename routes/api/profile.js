@@ -284,7 +284,7 @@ router.delete(
   }
 );
 
-//@route POST api/profile
+//@route DELETE api/profile
 //@dsc deletes user profile
 //@access private
 
@@ -292,9 +292,9 @@ router.delete(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Profile.findByIdAndRemove({ user: req.user.id }).then(() => {
-      // const _id = mongoose.Types.ObjectId.fromString(id);
-      User.findOneAndRemove({ _id: req.user.id }).then(() => {
+    Profile.findOneAndDelete({ user: req.user.id }).then(() => {
+      User.findOneAndDelete({ _id: req.body.id }).then(() => {
+        // const _id = mongoose.Types.ObjectId.fromString(id);
         res.json({ success: true });
       });
     });
