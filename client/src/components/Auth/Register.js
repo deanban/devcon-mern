@@ -11,7 +11,7 @@ class Register extends Component {
     email: "",
     password: "",
     password2: "",
-    errors: ""
+    errors: {}
   };
 
   componentWillReceiveProps(nextProps) {
@@ -131,7 +131,7 @@ class Register extends Component {
   }
 }
 
-Register.PropTypes = {
+Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
