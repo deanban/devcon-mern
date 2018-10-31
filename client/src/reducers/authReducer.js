@@ -16,10 +16,5 @@ export default function(state = initialState, action) {
       };
     default:
       return state;
-    // case "TEST_DISPATCH":
-    //   return {
-    //     ...state,
-    //     user: action.payload
-    //   };
   }
 }
