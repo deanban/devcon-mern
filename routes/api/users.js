@@ -39,7 +39,12 @@ router.post("/register", (req, res) => {
         d: "mm" //default
       });
       const newUser = new User({
-        name: req.body.name,
+        //capitalize first and second name
+        name: req.body.name
+          .toLowerCase()
+          .split(" ")
+          .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+          .join(" "),
         email: req.body.email,
         avatar,
         password: req.body.password
