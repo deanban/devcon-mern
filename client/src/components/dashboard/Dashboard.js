@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCurrentProfile } from "../../actions/profileActions";
 import profileReducer from "../../reducers/profileReducer";
-import Spinner from "../commom/Spinner";
+import Spinner from "../common/Spinner";
 import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
