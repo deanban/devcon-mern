@@ -24,9 +24,9 @@ class Experience extends Component {
         </td>
         <td>
           <button
-            //if used with arrow syntax experiences go away,
-            //also experiences can't added
-            //a bug. will look into it
+            // if used with arrow syntax experiences go away,
+            // also experiences can't added
+            // a bug. will look into it
             onClick={this.onDeleteClick.bind(this, exp._id)}
             className="btn btn-danger"
           >
