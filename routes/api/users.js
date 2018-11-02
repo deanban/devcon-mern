@@ -5,6 +5,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
+//helpers
+const capitalize = require("../../helpers/capitalize-each-letter");
+
 //load input validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -38,13 +41,10 @@ router.post("/register", (req, res) => {
         r: "pg", //rating
         d: "mm" //default
       });
+
       const newUser = new User({
         //capitalize first and second name
-        name: req.body.name
-          .toLowerCase()
-          .split(" ")
-          .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(" "),
+        name: capitalize(req.body.name),
         email: req.body.email,
         avatar,
         password: req.body.password

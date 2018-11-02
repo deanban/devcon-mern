@@ -3,6 +3,9 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
+//helper
+const capitalize = require("../../helpers/capitalize-each-letter");
+
 // Load Validation
 const validateProfileInput = require("../../validation/profile");
 const validateExperienceInput = require("../../validation/experience");
@@ -120,11 +123,11 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
     if (req.body.handle) profileFields.handle = req.body.handle;
-    if (req.body.company) profileFields.company = req.body.company;
+    if (req.body.company) profileFields.company = capitalize(req.body.company);
     if (req.body.website) profileFields.website = req.body.website;
     if (req.body.location) profileFields.location = req.body.location;
     if (req.body.bio) profileFields.bio = req.body.bio;
-    if (req.body.status) profileFields.status = req.body.status;
+    if (req.body.status) profileFields.status = capitalize(req.body.status);
     if (req.body.githubusername)
       profileFields.githubusername = req.body.githubusername;
     // Skills - Spilt into array
@@ -184,7 +187,7 @@ router.post(
     Profile.findOne({ user: req.user.id }).then(profile => {
       const newExp = {
         title: req.body.title,
-        company: req.body.company,
+        company: capitalize(req.body.company),
         location: req.body.location,
         from: req.body.from,
         to: req.body.to,
@@ -217,9 +220,9 @@ router.post(
 
     Profile.findOne({ user: req.user.id }).then(profile => {
       const newEdu = {
-        school: req.body.school,
-        degree: req.body.degree,
-        fieldofstudy: req.body.fieldofstudy,
+        school: capitalize(req.body.school),
+        degree: capitalize(req.body.degree),
+        fieldofstudy: capitalize(req.body.fieldofstudy),
         from: req.body.from,
         to: req.body.to,
         current: req.body.current,
