@@ -5,6 +5,7 @@ import { withRouter, Link } from "react-router-dom";
 
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import { addExperience } from "../../actions/profileActions";
 
 class AddExperience extends Component {
   state = {
@@ -19,15 +20,33 @@ class AddExperience extends Component {
     disable: false
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   _onFormChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
+
   _onFormSubmit = event => {
     event.preventDefault();
-    console.log("clicked");
+    // console.log("clicked");
+    const expData = {
+      company: this.state.company,
+      title: this.state.title,
+      location: this.state.location,
+      from: this.state.from,
+      to: this.state.to,
+      current: this.state.current,
+      description: this.state.description
+    };
+    this.props.addExperience(expData, this.props.history);
   };
+
   _onCheck = event => {
     this.setState({
       disable: !this.state.disable,
@@ -127,6 +146,7 @@ class AddExperience extends Component {
 }
 
 AddExperience.propTypes = {
+  addExperience: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -138,5 +158,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {}
+  { addExperience }
 )(withRouter(AddExperience));
