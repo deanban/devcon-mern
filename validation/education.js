@@ -8,7 +8,7 @@ module.exports = function validateEducationInput(data) {
   //   data.name = !isEmpty(data.name) ? data.name : "";
   data.school = !isEmpty(data.school) ? data.school : "";
   data.degree = !isEmpty(data.degree) ? data.degree : "";
-  data.fos = !isEmpty(data.fos) ? data.fos : "";
+  data.fieldofstudy = !isEmpty(data.fieldofstudy) ? data.fieldofstudy : "";
   //   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 
   if (validator.isEmpty(data.school)) {
@@ -17,8 +17,8 @@ module.exports = function validateEducationInput(data) {
   if (validator.isEmpty(data.degree)) {
     errors.degree = "degree is required";
   }
-  if (validator.isEmpty(data.fos)) {
-    errors.fos = "field of study is required";
+  if (validator.isEmpty(data.fieldofstudy)) {
+    errors.fieldofstudy = "field of study is required";
   }
 
   return {

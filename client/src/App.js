@@ -80,6 +80,13 @@ class App extends Component {
                   component={AddExperience}
                 />
               </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-education"
+                  component={AddEducation}
+                />
+              </Switch>
             </div>
             <Footer />
           </div>
