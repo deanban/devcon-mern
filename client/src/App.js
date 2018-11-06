@@ -18,6 +18,7 @@ import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
 import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-credentials/AddExperience";
@@ -58,6 +59,9 @@ class App extends Component {
             </div>
             <div className="container">
               <Route exact path="/profiles" component={Profiles} />
+            </div>
+            <div className="container">
+              <Route exact path="/profile/:handle" component={Profile} />
             </div>
             <div className="container">
               <Switch>
