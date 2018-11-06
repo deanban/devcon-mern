@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Spinner from "../common/Spinner";
+import ProfileItem from "./ProfileItem";
 import { getProfiles } from "../../actions/profileActions";
 
-export class Profiles extends Component {
+class Profiles extends Component {
   componentDidMount() {
     this.props.getProfiles();
   }
@@ -17,11 +18,14 @@ export class Profiles extends Component {
       profileItems = <Spinner />;
     } else {
       if (profiles.length > 0) {
-        profileItems = <h1>PROFILES HERE</h1>;
+        profileItems = profiles.map(profile => (
+          <ProfileItem key={profile._id} profile={profile} />
+        ));
       } else {
-        profileItems = <h4>No Profiles Found</h4>;
+        profileItems = <h4>No profiles found...</h4>;
       }
     }
+
     return (
       <div className="profiles">
         <div className="container">
