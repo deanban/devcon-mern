@@ -5,6 +5,7 @@ import Experience from "../dashboard/Experience";
 export default class ProfileCreds extends Component {
   render() {
     const { education, experience } = this.props;
+
     //experience items
     const expItems = experience.map(exp => (
       <li key={exp._id} className="list-group-item">
@@ -39,6 +40,7 @@ export default class ProfileCreds extends Component {
         </p>
       </li>
     ));
+
     //education items
     const eduItems = education.map(edu => (
       <li key={edu._id} className="list-group-item">
@@ -70,6 +72,7 @@ export default class ProfileCreds extends Component {
         </p>
       </li>
     ));
+
     return (
       <div className="row">
         <div className="col-md-6">
