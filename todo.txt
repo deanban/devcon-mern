@@ -5,3 +5,13 @@ fix --bug in delete api/profile
     --caught on 10/16/18
     --10/16/18 fixed profile delete, but user isn't being deleted
     --11/02/18 fixed!
+
+error --11/07/2018:
+    "Warning: Can't call setState (or forceUpdate) on an unmounted component.
+    This is a no-op, but it indicates a memory leak in your application.
+    To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
+    in ProfileGithub (at Profile.js:48)
+    in div (at Profile.js:32)"
+
+    --solution was to put a ref="checkref" in the div and
+      check for the ref with 'this.refs.checkref' before setState.

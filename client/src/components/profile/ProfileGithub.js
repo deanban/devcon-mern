@@ -18,9 +18,12 @@ export default class ProfileGithub extends Component {
           &sort=${sort}&client_id=${clientID}&client_secret=${clientSecret}`)
       .then(res => res.json())
       .then(data => {
-        this.setState({
-          repos: data
-        });
+        //check line=9 in todo.txt for why 'this.refs.checkref' was used.
+        if (this.refs.checkref) {
+          this.setState({
+            repos: data
+          });
+        }
       })
       .catch(err => console.log(err));
   }
@@ -55,7 +58,7 @@ export default class ProfileGithub extends Component {
     ));
 
     return (
-      <div>
+      <div ref="checkref">
         <hr />
         <h3 className="mb-4">Latest Github Repos</h3>
         {repoItems}
