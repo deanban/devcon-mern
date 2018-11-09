@@ -13,5 +13,5 @@ error --11/07/2018:
     in ProfileGithub (at Profile.js:48)
     in div (at Profile.js:32)"
 
-    --solution was to put a ref="checkref" in the div and
-      check for the ref with 'this.refs.checkref' before setState.
+    --solution was to put a ref="checkref" in the div and setState
+      only if 'this.refs.checkref' is true.

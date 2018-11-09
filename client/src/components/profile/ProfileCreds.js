@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
-import Experience from "../dashboard/Experience";
+// import Experience from "../dashboard/Experience";
 
 export default class ProfileCreds extends Component {
   render() {

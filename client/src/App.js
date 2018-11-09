@@ -25,6 +25,8 @@ import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
 import Notfound from "./components/not-found/Notfound";
 
+import Posts from "./components/posts/Posts";
+
 //check for token
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -95,6 +97,9 @@ class App extends Component {
                   path="/add-education"
                   component={AddEducation}
                 />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/feed" component={Posts} />
               </Switch>
               <Route exact path="/not-found" component={Notfound} />
             </div>
