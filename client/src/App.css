@@ -38,6 +38,17 @@ img {
   color: #bbb !important;
 }
 
+.footer {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  height: 60px;
+  background-color: #0f0f0f;
+}
+/* .footer::footer-block {
+  margin: 20px 0;
+} */
+
 /* .App {
   text-align: center;
 }
