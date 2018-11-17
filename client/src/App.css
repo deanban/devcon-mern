@@ -47,17 +47,16 @@ img {
   min-height: 100%;
 } */
 
-.container {
-  min-height: calc(100vh - 1500px);
-}
+/* .container {
+  flex: 1 0 auto;
+} */
 
 .footer {
-  /* position: absolute; */
-  right: 0;
-  bottom: 0;
+  position: fixed;
   left: 0;
-  padding: 1rem;
+  bottom: 0;
   width: 100%;
+  padding: 1rem;
   height: 63px;
   background-color: #0f0f0f;
 }
