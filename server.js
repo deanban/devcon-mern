@@ -11,6 +11,8 @@ const app = express();
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
+console.log(process.env.NODE_ENV);
+
 //DB config
 const db = require("./config/keys").mongoURI;
 
