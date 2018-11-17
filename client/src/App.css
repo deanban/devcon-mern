@@ -7,7 +7,7 @@ img {
   background: url("./img/showcase.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
 }
@@ -38,12 +38,27 @@ img {
   color: #bbb !important;
 }
 
+/* .footer-container {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  margin: 0;
+  padding-bottom: 30vh;
+  min-height: 100%;
+} */
+
+.container {
+  min-height: calc(100vh - 1500px);
+}
+
 .footer {
-  position: absolute;
+  /* position: absolute; */
+  right: 0;
   bottom: 0;
+  left: 0;
+  padding: 1rem;
   width: 100%;
-  position: absolute;
-  height: 67px;
+  height: 63px;
   background-color: #0f0f0f;
 }
 /* .footer::footer-block {
