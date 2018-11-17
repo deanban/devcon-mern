@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
-import profileReducer from "../../reducers/profileReducer";
+// import profileReducer from "../../reducers/profileReducer";
 import Spinner from "../common/Spinner";
 import { Link } from "react-router-dom";
 import ProfileActions from "./ProfileActions";
