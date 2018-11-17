@@ -39,10 +39,10 @@ img {
 }
 
 .footer {
-  bottom: 0;
+  bottom: 100;
   width: 100%;
   position: absolute;
-  height: 65px;
+  height: 67px;
   background-color: #0f0f0f;
 }
 /* .footer::footer-block {
