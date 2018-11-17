@@ -39,7 +39,8 @@ img {
 }
 
 .footer {
-  bottom: 100;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   position: absolute;
   height: 67px;
