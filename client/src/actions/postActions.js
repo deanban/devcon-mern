@@ -60,6 +60,67 @@ export const getPosts = () => dispatch => {
     });
 };
 
+//get single post
+export const getPost = id => dispatch => {
+  dispatch(setPostLoading());
+  axios
+    .get(`/api/posts/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch({
+        type: GET_POST,
+        payload: null
+      });
+    });
+};
+
+export const addLike = id => dispatch => {
+  axios
+    .post(`/api/posts/like/${id}`, id)
+    .then(res => dispatch(getPosts()))
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
+export const removeLike = id => dispatch => {
+  axios
+    .post(`/api/posts/unlike/${id}`, id)
+    .then(res => dispatch(getPosts()))
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
+//add comment
+export const addComment = (postId, commentData) => dispatch => {
+  axios
+    .post(`/api/posts/comment/${postId}`, commentData)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 //set loading
 export const setPostLoading = () => {
   return {
