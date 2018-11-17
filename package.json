@@ -9,7 +9,7 @@
     "client-install": "yarn --cwd client install",
     "client": "yarn --cwd client start",
     "devcon": "concurrently \"yarn dev\" \"yarn client\"",
-    "heroku-postbuild": "YARN_PRODUCTION=false yarn --cwd client install && yarn run --cwd client build "
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Dean",
   "license": "MIT",
