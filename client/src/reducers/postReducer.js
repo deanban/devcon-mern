@@ -5,6 +5,7 @@ import {
   ADD_POST,
   DELETE_POST
 } from "../actions/types";
+import { STATES } from "mongoose";
 
 const initialState = {
   posts: [],
@@ -31,6 +32,12 @@ export default (state = initialState, action) => {
         ...state,
         posts: action.payload,
         loading: false
+      };
+
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post._id !== action.payload)
       };
 
     default:
