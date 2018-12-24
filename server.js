@@ -30,7 +30,7 @@ app.use(passport.initialize());
 
 //passport config
 require("./config/passport")(passport);
-//use routes
+//user routes
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
